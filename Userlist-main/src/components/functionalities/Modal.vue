@@ -6,7 +6,7 @@
                 close
             </span>
             <div class="font-bold ">
-                <div>{{`${userData.first_name} ${userData.last_name}`}}</div>
+                <div>{{`${userData.name}`}}</div>
 
             </div>
             <div class="modal-body py-5 space-y-3">

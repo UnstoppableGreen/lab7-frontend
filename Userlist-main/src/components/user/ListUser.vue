@@ -15,12 +15,12 @@
             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-6 overflow-x-auto ">
                 <div class="flex  justify-between ">
                     <div >
-                        <p class="text-3xl font-bold">USERS 
+                        <p class="text-3xl font-bold">Клиенты 
                             <span class="material-icons">
                                     people
                             </span>
                          </p>
-                        <p class="text-gray-400 mt-2 mb-5">{{data.total}} users</p>
+                         <!--<p class="text-gray-400 mt-2 mb-5">{{data.total}} users</p>-->
                        
                     </div>
                     <filter-user @setFilter="filterData" ></filter-user>
@@ -34,10 +34,10 @@
                         
                         <transition-group name='list' >
                              
-                                 <user  v-show="!isFilter" v-for="user in usersdata" :key="user.id+122" 
+                                 <user  v-show="!isFilter" v-for="user in usersdata" :key="user.clientID+122" 
                                         :userdata='user' @click="openModal(user)" ></user>
                              
-                                 <user   v-show="isFilter" v-for="user in filterbyPage" :key="user.id" 
+                                 <user   v-show="isFilter" v-for="user in filterbyPage" :key="user.clientID" 
                                         :userdata='user'  @click="openModal(user)"   >
                                 </user>
                              
@@ -132,14 +132,14 @@ export default {
             switch(data){
                 case 'asc':
                     filteredData.value = Array.from(EntireUserList.value).sort((a,b)=>{
-                        if (a.first_name < b.first_name) return -1
-                            return a.first_name > b.first_name ? 1 : 0
+                        if (a.name < b.name) return -1
+                            return a.name > b.name ? 1 : 0
                     })
                     break;
                 case 'des':
                     filteredData.value= Array.from(EntireUserList.value).sort((a,b)=>{
-                        if (a.first_name > b.first_name) return -1
-                            return a.first_name < b.first_name ? 1 : 0
+                        if (a.name > b.name) return -1
+                            return a.name < b.name ? 1 : 0
                     })
                     break;
                 default:    

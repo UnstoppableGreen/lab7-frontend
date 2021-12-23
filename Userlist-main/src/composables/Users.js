@@ -8,14 +8,14 @@ export default function useUser(){
     const user= ref([])
     const router = useRouter()
     const EntireUserList = ref([])
-
+	
  //   const getAllData = async (params) => {
   //      let response = await User.get('users',{params:params})
   //      data.value = response.data;
   //      usersdata.value=response.data.data
   //  }
 	
-        const getAllData = async () => {
+    const getAllData = async () => {
         let response = await User.get('/client/getClients')
 		
         //data.value = response.data;
@@ -45,7 +45,7 @@ export default function useUser(){
       }
 
     const getUser = async (clientID) => {
-        let response = await User.get(`client/getClientById/${clientID}`) //ПРОВЕРИТЬ
+        let response = await User.get(`client/getClientById?clientID=${clientID}`) //ПРОВЕРИТЬ
         user.value = response.data.data;
     }
     
@@ -55,13 +55,14 @@ export default function useUser(){
           
     }
 
-    const updateUser = async (clientID) => {
-          await User.put(`users/${clientID}` , user.value)
+    const updateUser = async (data) => {
+          //await User.put(`users/${clientID}` , user.value)
+		await User.post(`client/updateClient?${data}`,data)
           await router.push({name:'user.index'})
         }
     
     const deleteUser = async (clientID) => {
-        let confirm=window.confirm('Уверены в удалении пользователя с id: '+clientID+' ?')
+        let confirm=window.confirm('Уверены в удалении пользователя с id: '+clientID+'?')
         if(confirm) {    
             await User.post(`client/deleteClient?clientID=${clientID}`)
         }

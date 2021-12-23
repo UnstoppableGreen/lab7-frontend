@@ -20,11 +20,16 @@
                 {{userdata.contacts}}
             </p>
           </td>
-          <td class=" py-5  bg-white text-sm">
+		<td class=" py-5  bg-white text-sm">
+            <p class=" md:text-base text-gray-900 whitespace-no-wrap">
+                {{userdata.address}}
+            </p>
+          </td>
+		<td class=" py-5  bg-white text-sm">
             <p class=" md:text-base text-gray-900 whitespace-no-wrap">
                 {{userdata.date}}
             </p>
-          </td>    		  
+         </td>    		  
          <td class="hidden md:table-cell text-center md:pl-1 md:py-5  bg-white text-sm">
 			<router-link :to="{name:'user.edit', params: {clientID: userdata.clientID }} " class="text-gray-500  hover:text-blue-500  mx-2">
 				<i class="font-bold transition duration-200 ease-in-out material-icons-outlined md:text-md">manage_accounts</i>
@@ -43,6 +48,7 @@
 
 <script>
 import useUser from '../../composables/Users';
+
 export default {
     name:'User',
     props:{
